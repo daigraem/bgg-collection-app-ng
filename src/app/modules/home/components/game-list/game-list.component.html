@@ -1,0 +1,17 @@
+<table class="table">
+  <caption>List of games</caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let game of games; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td><img [src]="game.thumbnail" alt="{{ game.getOriginalName() }}"></td>
+      <td>{{ game.getName() }}</td>
+    </tr>
+  </tbody>
+</table>
