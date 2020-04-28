@@ -33,7 +33,8 @@ export class JsonApiService {
   getGame(id: number): Observable<IBoardGame | undefined> {
     return this.getResponse()
       .pipe(
-        map((response: IAjaxResponse<IBoardGame[]>) => response.data.find(g => g._objectid === id))
+        map((response: IAjaxResponse<IBoardGame[]>) => response.data.find(g => g._objectid === id)),
+        map(data => new BoardGame().deserialize(data))
       );
   }
 

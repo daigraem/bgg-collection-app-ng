@@ -1,33 +1,56 @@
 import { Deserializable } from './deserializable.model';
+import { IBoardGameStats, BoardGameStats } from './board-game-stats.model';
 
 export interface IBoardGame {
   _objectid: number;
   _subtype: string;
-  originalname: string;
+  originalname?: string;
   name: object;
   thumbnail: string;
   image: string;
+  yearpublished: string;
+  stats: IBoardGameStats;
+  isExpansion(): boolean;
   getName(): string;
-  getOriginalName(): string;
+  getTypeName(): string;
 }
 
 export class BoardGame implements IBoardGame, Deserializable {
   _objectid: number;
   _subtype: string;
-  originalname: string;
+  originalname?: string;
   name: object;
   thumbnail: string;
   image: string;
+  yearpublished: string;
+  stats: IBoardGameStats;
 
+  isExpansion(): boolean {
+    return this._subtype === 'boardgameexpansion';
+  };
   getName(): string {
-    return this.name["#text"];
+    return this.name["__text"];
   }
 
-  getOriginalName(): string {
-    return this.originalname ? this.originalname : this.name["#text"];
+  getTypeName(): string {
+    let name: string;
+
+    switch (this._subtype) {
+      case 'boardgameexpansion':
+        name = 'Expansion';
+        break;
+      default:
+        name = 'Game';
+        break;
+    }
+
+    return name;
   }
 
   deserialize(input: any): this {
-    return Object.assign(this, input);
+    Object.assign(this, input);
+    this.stats = new BoardGameStats().deserialize(input.stats);
+
+    return this;
   }
 }

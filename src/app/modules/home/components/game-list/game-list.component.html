@@ -2,16 +2,25 @@
   <caption>List of games</caption>
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Image</th>
       <th scope="col">Title</th>
+      <th scope="col">Players</th>
+      <th scope="col">BGG&nbsp;Rating</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let game of games; let i = index">
-      <th scope="row">{{ i + 1 }}</th>
-      <td><img [src]="game.thumbnail" alt="{{ game.getOriginalName() }}"></td>
-      <td>{{ game.getName() }}</td>
+      <td>
+        <img [src]="game.thumbnail" alt="{{ game.getName() }}" [routerLink]="['/dashboard/games/', game._objectid]">
+      </td>
+      <td>
+        <div>{{ game.getName() }} <span *ngIf="game.isExpansion()" class="badge badge-secondary">{{ game.getTypeName() }}</span></div>
+        <small *ngIf="game.originalname">{{ game.originalname }}</small>
+      </td>
+      <td>{{ game.stats.getPlayerCount() }}</td>
+      <td>
+        <span class="badge badge-primary">{{ game.stats.getRating() | number: '1.1-1' }}</span>
+      </td>
     </tr>
   </tbody>
 </table>

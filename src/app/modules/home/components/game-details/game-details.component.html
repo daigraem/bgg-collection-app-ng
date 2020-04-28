@@ -1,1 +1,17 @@
-<p>board-game works!</p>
+<div class="row">
+
+  <div class="col">
+
+    <h1>{{ game.getName() }} <small>({{ game.yearpublished }})</small></h1>
+    <small *ngIf="game.originalname">Original title: {{ game.originalname }}</small>
+  </div>
+
+  <div class="col-4 order-first">
+
+    <figure class="figure">
+      <img src="{{ game.image }}" class="figure-img img-fluid rounded" alt="{{ game.getName() }}">
+    </figure>
+
+  </div>
+
+</div>
