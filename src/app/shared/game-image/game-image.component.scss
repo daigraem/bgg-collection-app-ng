@@ -1,0 +1,9 @@
+.c-game-image {
+  margin: 0;
+
+  &__img {
+    display: block;
+    max-width: 120px;
+    max-height: 100px;
+  }
+}

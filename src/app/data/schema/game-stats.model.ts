@@ -1,20 +1,31 @@
-import { Deserializable } from './deserializable.model';
+import { IDeserializable } from './deserializable.model';
 
-export interface IBoardGameStats {
+export interface IGameStats {
   rating: object;
   _minplayers: number;
   _maxplayers: number;
+  _playingtime: number;
+  _minplaytime: number;
+  _maxplaytime: number;
   getPlayerCount(): string;
+  getPlaytime(): string;
   getRating(): number;
 }
 
-export class BoardGameStats implements IBoardGameStats, Deserializable {
+export class GameStats implements IGameStats, IDeserializable {
   rating: object;
   _minplayers: number;
   _maxplayers: number;
+  _playingtime: number;
+  _minplaytime: number;
+  _maxplaytime: number;
 
   getPlayerCount(): string {
     return this._minplayers === this._maxplayers ? `${this._minplayers}` : `${this._minplayers} - ${this._maxplayers}`;
+  };
+
+  getPlaytime(): string {
+    return this._minplaytime === this._maxplaytime ? `${this._playingtime}` : `${this._minplaytime} - ${this._maxplaytime}`;
   };
 
   getRating(): number {

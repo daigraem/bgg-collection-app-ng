@@ -1,0 +1,11 @@
+<div class="c-game-title">
+
+  <h3 class="h5">{{ game.getName() }}</h3>
+
+  <div *ngIf="game.version">
+    <small><span *ngIf="game.originalname">{{ game.originalname }} / </span>{{ versionName }}
+      ({{ versionYear }})</small>
+  </div>
+
+  <div *ngIf="game.isExpansion()"><span class="badge badge-secondary">{{ game.getTypeName() }}</span></div>
+</div>

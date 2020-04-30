@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IBoardGame } from '@data/schema/board-game.model';
+import { IGame } from '@data/schema/game.model';
 import { JsonApiService } from '@data/service/json-api.service';
 
 @Component({
@@ -9,7 +9,9 @@ import { JsonApiService } from '@data/service/json-api.service';
 })
 export class GameListComponent implements OnInit {
 
-  games: IBoardGame[] = [];
+  games: IGame[] = [];
+  updated: string;
+  total: number;
 
   constructor(
     private jsonApi: JsonApiService
@@ -21,8 +23,10 @@ export class GameListComponent implements OnInit {
 
   loadCollection() {
     this.jsonApi.getCollection().subscribe({
-      next: games => {
-        this.games = games;
+      next: collection => {
+        this.games = collection.item;
+        this.updated = collection._pubdate;
+        this.total = collection._totalitems;
       },
       error: err => console.log(err)
     });

@@ -4,7 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
 import { IAjaxResponse } from '@data/schema/ajax-response.model';
-import { IBoardGame, BoardGame } from '@data/schema/board-game.model';
+import { IGame, Game } from '@data/schema/game.model';
+import { ICollection, Collection } from '@data/schema/collection.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,26 +16,26 @@ export class JsonApiService {
 
   constructor(private http: HttpClient) { }
 
-  getResponse(): Observable<IAjaxResponse<IBoardGame[]>> {
-    return this.http.get<IAjaxResponse<IBoardGame[]>>(this.apiUrl)
+  getResponse(): Observable<IAjaxResponse<ICollection>> {
+    return this.http.get<IAjaxResponse<ICollection>>(this.apiUrl)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  getCollection(): Observable<IBoardGame[]> {
+  getCollection(): Observable<ICollection> {
     return this.getResponse()
       .pipe(
-        map((response: IAjaxResponse<IBoardGame[]>): IBoardGame[] => response.data),
-        map(data => data.map(data => new BoardGame().deserialize(data)))
+        map((response: IAjaxResponse<ICollection>): ICollection => response.data),
+        map(data => new Collection().deserialize(data))
       );
   }
 
-  getGame(id: number): Observable<IBoardGame | undefined> {
-    return this.getResponse()
+  getGame(id: number): Observable<IGame | undefined> {
+    return this.getCollection()
       .pipe(
-        map((response: IAjaxResponse<IBoardGame[]>) => response.data.find(g => g._objectid === id)),
-        map(data => new BoardGame().deserialize(data))
+        map((response: ICollection) => response.item.find(g => g._objectid === id)),
+        map(data => new Game().deserialize(data))
       );
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IBoardGame } from '@data/schema/board-game.model';
+import { IGame } from '@data/schema/game.model';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class GameDetailsComponent implements OnInit {
 
-  game: IBoardGame;
+  game: IGame;
 
   constructor(private route: ActivatedRoute) {}
 

@@ -1,7 +1,8 @@
-import { Deserializable } from './deserializable.model';
-import { IBoardGameStats, BoardGameStats } from './board-game-stats.model';
+import { IDeserializable } from './deserializable.model';
+import { IGameStats, GameStats } from './game-stats.model';
+import { IGameVersion, GameVersion } from './game-version.model';
 
-export interface IBoardGame {
+export interface IGame {
   _objectid: number;
   _subtype: string;
   originalname?: string;
@@ -9,13 +10,14 @@ export interface IBoardGame {
   thumbnail: string;
   image: string;
   yearpublished: string;
-  stats: IBoardGameStats;
+  stats: IGameStats;
+  version?: IGameVersion;
   isExpansion(): boolean;
   getName(): string;
   getTypeName(): string;
 }
 
-export class BoardGame implements IBoardGame, Deserializable {
+export class Game implements IGame, IDeserializable {
   _objectid: number;
   _subtype: string;
   originalname?: string;
@@ -23,11 +25,13 @@ export class BoardGame implements IBoardGame, Deserializable {
   thumbnail: string;
   image: string;
   yearpublished: string;
-  stats: IBoardGameStats;
+  stats: IGameStats;
+  version?: IGameVersion;
 
   isExpansion(): boolean {
     return this._subtype === 'boardgameexpansion';
   };
+
   getName(): string {
     return this.name["__text"];
   }
@@ -49,7 +53,14 @@ export class BoardGame implements IBoardGame, Deserializable {
 
   deserialize(input: any): this {
     Object.assign(this, input);
-    this.stats = new BoardGameStats().deserialize(input.stats);
+
+    this.stats = new GameStats().deserialize(input.stats);
+
+    if (input.version && input.version.item) {
+      this.version = new GameVersion().deserialize(input.version.item[0]);
+    } else {
+      this.version = null;
+    }
 
     return this;
   }
