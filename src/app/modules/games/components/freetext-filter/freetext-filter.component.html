@@ -1,0 +1,18 @@
+<div class="form-row align-items-center">
+
+  <div class="col-sm-12 col-lg-8">
+    <app-input-debounce placeholder="Filter by Title" (value)="changeSearch($event)"></app-input-debounce>
+  </div>
+
+  <div class="col-sm-12 col-lg-4">
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="incl-expansions-checkbox"
+        [checked]="expansions"
+        (change)="toggleExpansions()"
+      />
+      <label class="form-check-label" for="incl-expansions-checkbox">incl.&nbsp;Expansions</label>
+    </div>
+  </div>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContentLayoutComponent } from './content-layout.component';
+import { FreetextFilterComponent } from './freetext-filter.component';
 
-describe('ContentLayoutComponent', () => {
-  let component: ContentLayoutComponent;
-  let fixture: ComponentFixture<ContentLayoutComponent>;
+describe('FreetextFilterComponent', () => {
+  let component: FreetextFilterComponent;
+  let fixture: ComponentFixture<FreetextFilterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContentLayoutComponent ]
+      declarations: [ FreetextFilterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContentLayoutComponent);
+    fixture = TestBed.createComponent(FreetextFilterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

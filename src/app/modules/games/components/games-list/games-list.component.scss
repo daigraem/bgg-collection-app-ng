@@ -1,0 +1,23 @@
+.c-games-list {
+
+  &__col {
+
+    &.--image {
+      width: 145px;
+    }
+  }
+
+	&__th {
+    vertical-align: middle;
+
+    &.--attributes {
+      width: 100px;
+      white-space: nowrap;
+      text-align: center;
+    }
+  }
+
+	&__td {
+		vertical-align: middle;
+  }
+}

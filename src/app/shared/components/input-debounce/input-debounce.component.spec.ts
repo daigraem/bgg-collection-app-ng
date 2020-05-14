@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContentLayoutComponent } from './content-layout.component';
+import { InputDebounceComponent } from './input-debounce.component';
 
-describe('ContentLayoutComponent', () => {
-  let component: ContentLayoutComponent;
-  let fixture: ComponentFixture<ContentLayoutComponent>;
+describe('InputDebounceComponent', () => {
+  let component: InputDebounceComponent;
+  let fixture: ComponentFixture<InputDebounceComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContentLayoutComponent ]
+      declarations: [ InputDebounceComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContentLayoutComponent);
+    fixture = TestBed.createComponent(InputDebounceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

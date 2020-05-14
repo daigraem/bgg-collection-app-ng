@@ -3,15 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'games', pathMatch: 'full' },
   {
     path: '',
     component: ContentLayoutComponent,
     children: [
       {
-        path: 'dashboard',
+        path: 'games',
         loadChildren: () =>
-          import('@modules/home/home.module').then(m => m.HomeModule),
+          import('@modules/games/games.module').then(m => m.GamesModule),
       }
     ]
   },

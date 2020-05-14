@@ -1,0 +1,28 @@
+a {
+  position: relative;
+  cursor: pointer;
+
+  &::before, &::after {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(calc(100% + 2px), -4px);
+  }
+
+  &::before {
+    content: '↓';
+  }
+
+  &::after {
+    content: '↑';
+  }
+
+  &.is-active-DESC::before {
+    display: block;
+  }
+
+  &.is-active-ASC::after {
+    display: block;
+  }
+}

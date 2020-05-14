@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContentLayoutComponent } from './content-layout.component';
+import { OrderbyFilterComponent } from './orderby-filter.component';
 
-describe('ContentLayoutComponent', () => {
-  let component: ContentLayoutComponent;
-  let fixture: ComponentFixture<ContentLayoutComponent>;
+describe('OrderbyFilterComponent', () => {
+  let component: OrderbyFilterComponent;
+  let fixture: ComponentFixture<OrderbyFilterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContentLayoutComponent ]
+      declarations: [ OrderbyFilterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContentLayoutComponent);
+    fixture = TestBed.createComponent(OrderbyFilterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
