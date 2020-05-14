@@ -9,6 +9,7 @@ import { IGame } from '@data/schema/game.model';
 export class GameTitleComponent implements OnInit {
 
   @Input() game: IGame;
+  @Input() context: string = 'list';
   versionName: string;
   versionYear: string;
 

@@ -1,17 +1,21 @@
 <div class="row">
 
   <div class="col">
+    <app-game-title [game]="game" context="details"></app-game-title>
 
-    <h1>{{ game.getName() }} <small>({{ game.yearpublished }})</small></h1>
-    <small *ngIf="game.originalname">Original title: {{ game.originalname }}</small>
+    <dl>
+      <dt>Players</dt>
+      <dd>{{ game.stats.getPlayerCount() }}</dd>
+      <dt>Playtime</dt>
+      <dd>{{ game.stats.getPlaytime() }}</dd>
+      <dt>BGG&nbsp;Rating</dt>
+      <dd><app-ratings [rating]="game.stats.getRating()"></app-ratings></dd>
+    </dl>
+
   </div>
 
-  <div class="col-4 order-first">
-
-    <figure class="figure">
-      <img src="{{ game.image }}" class="figure-img img-fluid rounded" alt="{{ game.getName() }}">
-    </figure>
-
+  <div class="col-md-6 col-sm-12 order-first mb-3">
+    <app-game-image [game]="game" context="details"></app-game-image>
   </div>
 
 </div>

@@ -11,7 +11,7 @@ export const routes: Routes = [
     component: GamesComponent
   },
   {
-    path: 'games/:id',
+    path: ':id',
     component: GameDetailsComponent,
     resolve: {
       game: GameResolverService

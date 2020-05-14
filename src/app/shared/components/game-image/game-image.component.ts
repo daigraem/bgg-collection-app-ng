@@ -9,16 +9,16 @@ import { IGame } from '@data/schema/game.model';
 export class GameImageComponent implements OnInit {
 
   @Input() game: IGame;
-  @Input() size: string = 'thumbnail';
+  @Input() context: string = 'list';
   src: string;
 
   constructor() { }
 
   ngOnInit(): void {
     if (this.game.version && this.game.version.image) {
-      this.src = this.size === 'full' ? this.game.version.image : this.game.version.thumbnail;
+      this.src = this.context === 'details' ? this.game.version.image : this.game.version.thumbnail;
     } else {
-      this.src = this.size === 'full' ? this.game.image : this.game.thumbnail;
+      this.src = this.context === 'details' ? this.game.image : this.game.thumbnail;
     }
   }
 }

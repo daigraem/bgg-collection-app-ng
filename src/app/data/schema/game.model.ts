@@ -54,12 +54,16 @@ export class Game implements IGame, IDeserializable {
   deserialize(input: any): this {
     Object.assign(this, input);
 
-    this.stats = new GameStats().deserialize(input.stats);
+    if (!(input.stats instanceof GameStats)) {
+      this.stats = new GameStats().deserialize(input.stats);
+    }
 
-    if (input.version && input.version.item) {
-      this.version = new GameVersion().deserialize(input.version.item[0]);
-    } else {
-      this.version = null;
+    if (!(input.version instanceof GameVersion)) {
+      if (input.version && input.version.item) {
+        this.version = new GameVersion().deserialize(input.version.item[0]);
+      } else {
+        this.version = null;
+      }
     }
 
     return this;

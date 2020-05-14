@@ -1,9 +1,25 @@
 .c-game-image {
+  position: relative;
   margin: 0;
+  cursor: pointer;
+
+  &__link {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 
   &__img {
     display: block;
-    max-width: 120px;
-    max-height: 100px;
+    max-width: 100%;
+    height: auto;
+
+    &--list {
+      max-width: 120px;
+      max-height: 100px;
+    }
   }
 }

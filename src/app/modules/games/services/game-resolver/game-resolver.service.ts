@@ -19,7 +19,6 @@ export class GameResolverService  implements Resolve<IGame> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> {
-
     return this.jsonApi.getGame(route.params['id'])
       .pipe(catchError((err) => this.router.navigateByUrl('/')));
   }
