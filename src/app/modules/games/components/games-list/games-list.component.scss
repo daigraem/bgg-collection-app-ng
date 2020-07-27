@@ -1,13 +1,10 @@
 .c-games-list {
-
-  &__col {
-
-    &.--image {
-      width: 145px;
-    }
+  &__cell--image,
+  &__th--image {
+    width: 145px;
   }
 
-	&__th {
+  &__th {
     vertical-align: middle;
 
     &.--attributes {
@@ -17,7 +14,7 @@
     }
   }
 
-	&__td {
-		vertical-align: middle;
+  &__viewport {
+    height: 60vh;
   }
 }

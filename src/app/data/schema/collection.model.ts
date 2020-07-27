@@ -13,7 +13,7 @@ export class Collection implements ICollection, IDeserializable {
   _pubdate: string;
 
   deserialize(input: any): this {
-    Object.assign(this, input);
+    Object.assign(this, input.items);
     this.item = this.item.map(item => new Game().deserialize(item));
 
     return this;

@@ -33,7 +33,7 @@ export class Game implements IGame, IDeserializable {
   };
 
   getName(): string {
-    return this.name["__text"];
+    return this.name["$"];
   }
 
   getTypeName(): string {

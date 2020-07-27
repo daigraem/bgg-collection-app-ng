@@ -1,15 +1,12 @@
+<app-filters></app-filters>
+
 <table class="c-games-list table table-hover">
-  <caption>{{ total }} games &bull; Last updated: {{ updated | date:'longDate' }}</caption>
-  <colgroup>
-    <col class="c-games-list__col --image">
-  </colgroup>
   <thead>
     <tr>
-      <th scope="col" class="c-games-list__th">
+      <th scope="col" class="c-games-list__th c-games-list__th--image">
         <app-orderby-filter label="Title" [orderBy]="orderBy.Title"></app-orderby-filter>
       </th>
       <th scope="col" class="c-games-list__th">
-        <app-freetext-filter></app-freetext-filter>
       </th>
       <th scope="col" class="c-games-list__th --attributes">
         <app-orderby-filter label="Players" [orderBy]="orderBy.PlayerCount"></app-orderby-filter>
@@ -22,19 +19,33 @@
       </th>
     </tr>
   </thead>
-  <tbody>
-    <tr *ngFor="let game of filteredGames" class="c-games-list__tr">
-      <td class="c-games-list__td">
+</table>
+<div>
+  <div class="d-flex justify-content-center" *ngIf="loading">
+    <div class="spinner-border m-5" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <cdk-virtual-scroll-viewport itemSize="150" class="c-games-list__viewport" *ngIf="!loading">
+    <table class="c-games-list table table-hover">
+    <tr *cdkVirtualFor="let game of filteredGames" class="c-games-list__row">
+      <td class="c-games-list__cell c-games-list__cell--image">
         <app-game-image [game]="game"></app-game-image>
       </td>
-      <td class="c-games-list__td">
+      <td class="c-games-list__cell --title">
         <app-game-title [game]="game"></app-game-title>
       </td>
-      <td class="c-games-list__td text-center">{{ game.stats.getPlayerCount() }}</td>
-      <td class="c-games-list__td text-center">{{ game.stats.getPlaytime() }}</td>
-      <td class="c-games-list__td text-center">
+      <td class="c-games-list__cell --attributes">{{ game.stats.getPlayerCount() }}</td>
+      <td class="c-games-list__cell --attributes">{{ game.stats.getPlaytime() }}</td>
+      <td class="c-games-list__cell --attributes">
         <app-ratings [rating]="game.stats.getRating()"></app-ratings>
       </td>
     </tr>
-  </tbody>
-</table>
+
+    <tr *ngIf="filteredGames.length === 0" class="text-center">
+      No games match the filter criteria. <a (click)="onResetBtnClick()" href="#">Clear filters</a>
+    </tr>
+  </table>
+  </cdk-virtual-scroll-viewport>
+
+<span>{{ total }} games &bull; Last updated: {{ updated | date:'longDate' }}</span>

@@ -2,11 +2,11 @@ import { IDeserializable } from './deserializable.model';
 
 export interface IGameStats {
   rating: object;
-  _minplayers: number;
-  _maxplayers: number;
-  _playingtime: number;
-  _minplaytime: number;
-  _maxplaytime: number;
+  _minplayers?: number;
+  _maxplayers?: number;
+  _playingtime?: number;
+  _minplaytime?: number;
+  _maxplaytime?: number;
   getPlayerCount(): string;
   getPlaytime(): string;
   getRating(): number;
@@ -14,11 +14,11 @@ export interface IGameStats {
 
 export class GameStats implements IGameStats, IDeserializable {
   rating: object;
-  _minplayers: number;
-  _maxplayers: number;
-  _playingtime: number;
-  _minplaytime: number;
-  _maxplaytime: number;
+  _minplayers?: number;
+  _maxplayers?: number;
+  _playingtime?: number;
+  _minplaytime?: number;
+  _maxplaytime?: number;
 
   getPlayerCount(): string {
     return this._minplayers === this._maxplayers ? `${this._minplayers}` : `${this._minplayers} - ${this._maxplayers}`;

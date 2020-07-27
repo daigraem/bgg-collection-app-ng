@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IFilters, Order, OrderBy } from '@data/schema/filters.model';
+import { ISorting , Order, OrderBy } from '@data/schema/sorting.model';
 import { Subscription } from 'rxjs';
-import { FiltersService } from '@modules/games/services/filters/filters.service';
+import { SortingService } from '@modules/games/services/sorting/sorting.service';
 
 @Component({
   selector: 'app-orderby-filter',
@@ -14,14 +14,14 @@ export class OrderbyFilterComponent implements OnInit {
   @Input() orderBy: OrderBy;
   activeClassname: string = '';
 
-  private currentFilters: IFilters;
+  private currentFilters: ISorting ;
   private filtersSub: Subscription;
   private order: Order = Order.ASC;
 
-  constructor(private filterSrv: FiltersService) { }
+  constructor(private sortingService: SortingService) { }
 
   ngOnInit(): void {
-    this.filtersSub = this.filterSrv.getFilters().subscribe(
+    this.filtersSub = this.sortingService.getSorting().subscribe(
       res => {
         this.currentFilters = res;
         this.setActiveClassname();
@@ -45,7 +45,7 @@ export class OrderbyFilterComponent implements OnInit {
     }
   }
 
-  changeOrder() {
+  changeOrder(): void {
     this.order = this.order == Order.ASC ? Order.DESC : Order.ASC;
 
     const newFilters = {
@@ -53,7 +53,7 @@ export class OrderbyFilterComponent implements OnInit {
       order: this.order
     };
 
-    this.filterSrv.setFilters(Object.assign(this.currentFilters, newFilters));
+    this.sortingService.setSorting(newFilters);
   }
 
 }

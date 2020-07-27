@@ -10,6 +10,7 @@ import { map, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators'
 export class InputDebounceComponent implements OnInit {
   @Input() placeholder: string;
   @Input() delay: number = 300;
+  @Input() minLength: number = 1;
   @Output() value: EventEmitter<string> = new EventEmitter<string>();
 
   public inputValue: string;
@@ -17,7 +18,7 @@ export class InputDebounceComponent implements OnInit {
   constructor(private elementRef: ElementRef) {
     fromEvent(elementRef.nativeElement, 'keyup').pipe(
       map((event: any) => event.target.value),
-      filter(res => res.length > 1 || !res),
+      filter(res => res.length > this.minLength || !res),
       debounceTime(this.delay),
       distinctUntilChanged()
     ).subscribe(input => this.value.emit(input));
