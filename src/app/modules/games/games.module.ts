@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
-import { CoreModule } from '@app/core.module';
 import { SharedModule } from '@shared/shared.module';
 
 import { GamesRoutingModule } from './games-routing.module';
@@ -21,7 +20,6 @@ import { OrderbyFilterComponent } from './components/orderby-filter/orderby-filt
     OrderbyFilterComponent,
   ],
   imports: [
-    CoreModule,
     SharedModule,
     ScrollingModule,
     GamesRoutingModule

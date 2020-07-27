@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CoreModule } from '@app/core.module';
 import { SharedModule } from '@shared/shared.module';
 import { DataModule } from '@data/data.module';
 
@@ -23,7 +22,6 @@ import { httpInterceptorProviders } from '@data/interceptors';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    CoreModule,
     SharedModule,
     DataModule,
     AppRoutingModule
