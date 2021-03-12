@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { IFilters } from '@data/schema/filters.model';
-import { LoggerService } from '@shared/services/logger.service';
+import { LoggerService } from '@services/logger/logger.service';
 
 @Injectable({
   providedIn: 'root'

@@ -3,7 +3,7 @@ import { HttpInterceptor, HttpRequest, HttpResponse, HttpHandler } from '@angula
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { CacheMapService } from '@data/services/cache/cache-map.service';
-import { LoggerService } from '@shared/services/logger.service';
+import { LoggerService } from '@services/logger/logger.service';
 
 const CACHABLE_URL = '/api/collection';
 

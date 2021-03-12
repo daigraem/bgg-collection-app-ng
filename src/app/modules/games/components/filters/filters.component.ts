@@ -4,7 +4,7 @@ import { Subscription, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { IFilters } from '@data/schema/filters.model';
-import { LoggerService } from '@shared/services/logger.service';
+import { LoggerService } from '@services/logger/logger.service';
 import { SortingService } from '@modules/games/services/sorting/sorting.service';
 
 @Component({
