@@ -4,11 +4,13 @@ import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { CacheMapService } from '@data/services/cache/cache-map.service';
 import { LoggerService } from '@services/logger/logger.service';
+import { AppConfigService } from '@services/app-config/app-config.service';
 
-const CACHABLE_URL = '/api/collection';
 
 @Injectable()
 export class CachingInterceptor implements HttpInterceptor {
+  protected cacheableUrl = AppConfigService.config.apiUrl;
+
   constructor(private cache: CacheMapService, private logger: LoggerService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
@@ -33,6 +35,6 @@ export class CachingInterceptor implements HttpInterceptor {
     );
   }
   private isRequestCachable(req: HttpRequest<any>) {
-    return (req.method === 'GET') && (req.url.indexOf(CACHABLE_URL) > -1);
+    return (req.method === 'GET') && (req.url.indexOf(this.cacheableUrl) > -1);
   }
 }

@@ -6,13 +6,14 @@ import { map } from 'rxjs/operators';
 import { IAjaxResponse } from '@data/schema/ajax-response.model';
 import { IGame, Game } from '@data/schema/game.model';
 import { ICollection, Collection } from '@data/schema/collection.model';
+import { AppConfigService } from '@services/app-config/app-config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JsonApiService {
 
-  private apiUrl = '/api/collection';
+  private apiUrl = `${AppConfigService.config.apiUrl}/collection`;
 
   constructor(private http: HttpClient) { }
 
