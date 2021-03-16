@@ -11,14 +11,14 @@ export class GameTitleComponent implements OnInit {
   @Input() game: IGame;
   @Input() context = 'list';
   versionName: string;
-  versionYear: string;
+  versionYear: number;
 
   constructor() { }
 
   ngOnInit(): void {
     if (this.game.version) {
       this.versionName =  this.game.version.name._value;
-      this.versionYear = this.game.version.yearpublished._value;
+      this.versionYear = parseInt(this.game.version.yearpublished._value);
     }
   }
 

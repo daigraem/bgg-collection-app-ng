@@ -2,16 +2,15 @@
 
   <h3 *ngIf="context === 'list'" class="h5 c-game-title__h">
     <a [routerLink]="['/games', game._objectid]" class="c-game-title__link">
-      {{ game.getName() }}
+      {{ game.getName() }}<small *ngIf="game.originalname"> / {{ game.originalname }}</small>
     </a>
   </h3>
   <h1 *ngIf="context === 'details'" class="h1 c-game-title__h">
-    {{ game.getName() }}
+    {{ game.getName() }}<small *ngIf="game.originalname"> / {{ game.originalname }}</small>
   </h1>
 
   <div *ngIf="game.version">
-    <small><span *ngIf="game.originalname">{{ game.originalname }} / </span>{{ versionName }}
-      ({{ versionYear }})</small>
+    <small><span *ngIf="versionName">{{ versionName }}</span><span *ngIf="versionYear">&nbsp;({{ versionYear }})</span></small>
   </div>
 
   <div *ngIf="game.isExpansion()"><span class="badge badge-secondary">{{ game.getTypeName() }}</span></div>
