@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { IGame } from '@data/schema/game.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { IGame } from '@data/schema/game.model';
   templateUrl: './game-image.component.html',
   styleUrls: ['./game-image.component.scss']
 })
-export class GameImageComponent implements OnInit {
+export class GameImageComponent implements OnInit, DoCheck {
 
   @Input() game: IGame;
   @Input() context = 'list';
@@ -15,6 +15,14 @@ export class GameImageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.setSrc();
+  }
+
+  ngDoCheck(): void {
+    this.setSrc();
+  }
+
+  private setSrc(): void {
     if (this.game.version && this.game.version.image) {
       this.src = this.context === 'details' ? this.game.version.image : this.game.version.thumbnail;
     } else {
