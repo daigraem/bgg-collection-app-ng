@@ -6,7 +6,10 @@
 
   &__th {
     vertical-align: middle;
+  }
 
+  &__cell,
+  &__th {
     &.--attributes {
       width: 100px;
       white-space: nowrap;
@@ -15,6 +18,6 @@
   }
 
   &__viewport {
-    height: 60vh;
+    height: 66vh;
   }
 }

@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div class="col-sm-12 col-lg-2">
+  <div class="offset-lg-1 col-sm-12 col-lg-2">
     <div class="form-group">
       <label>Players</label>
       <npn-slider [min]="currentFilters.playersLimit[0]" [max]="currentFilters.playersLimit[1]"
@@ -40,8 +40,8 @@
     </div>
   </div>
 
-  <div class="col-sm-12 col-lg-2">
-    <div class="form-group">
+  <div class="col-sm-12 col-lg-1">
+    <div class="form-group text-right">
       <button class="btn btn-secondary btn-sm" (click)="onResetBtnClick()">Reset</button>
     </div>
   </div>

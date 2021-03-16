@@ -1,6 +1,7 @@
 a {
   position: relative;
   cursor: pointer;
+  color: currentColor;
 
   &::before, &::after {
     display: none;
