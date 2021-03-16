@@ -1,4 +1,5 @@
 {
   "appTitle": "Boardgame Collection",
-  "apiUrl": "http://localhost/api"
+  "apiUrl": "http://localhost/api",
+  "footerText": "Copyright &amp; Cookies"
 }

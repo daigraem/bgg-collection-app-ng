@@ -4,6 +4,7 @@ import { LoggerService } from '@services/logger/logger.service';
 export interface IAppConfig {
   appName: string;
   apiUrl: string;
+  footerText: string;
 }
 
 @Injectable()
