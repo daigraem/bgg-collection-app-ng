@@ -9,7 +9,7 @@ import { IGame } from '@data/schema/game.model';
 export class GameImageComponent implements OnInit {
 
   @Input() game: IGame;
-  @Input() context: string = 'list';
+  @Input() context = 'list';
   src: string;
 
   constructor() { }

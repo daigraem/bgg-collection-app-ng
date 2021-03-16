@@ -6,7 +6,7 @@ export interface IGame {
   _objectid: number;
   _subtype: string;
   originalname?: string;
-  name: object;
+  name: any;
   thumbnail: string;
   image: string;
   yearpublished: string;
@@ -21,7 +21,7 @@ export class Game implements IGame, IDeserializable {
   _objectid: number;
   _subtype: string;
   originalname?: string;
-  name: object;
+  name: any;
   thumbnail: string;
   image: string;
   yearpublished: string;
@@ -33,7 +33,7 @@ export class Game implements IGame, IDeserializable {
   };
 
   getName(): string {
-    return this.name["$"];
+    return this.name.$;
   }
 
   getTypeName(): string {

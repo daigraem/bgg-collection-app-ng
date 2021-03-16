@@ -37,7 +37,7 @@ export class FiltersService {
     return this.tracker.asObservable();
   }
 
-  setFilters(newFilters: object): void {
+  setFilters(newFilters: any): void {
     this.tracker.next(Object.assign(this.currentFilters, newFilters));
 
     this.logger.log(`Filters changed:`);

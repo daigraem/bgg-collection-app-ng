@@ -1,11 +1,11 @@
-<div class="c-game-title --{{ context }} {{ context == 'details' ? 'mb-4' : '' }}">
+<div class="c-game-title --{{ context }} {{ context === 'details' ? 'mb-4' : '' }}">
 
-  <h3 *ngIf="context == 'list'" class="h5 c-game-title__h">
+  <h3 *ngIf="context === 'list'" class="h5 c-game-title__h">
     <a [routerLink]="['/games', game._objectid]" class="c-game-title__link">
       {{ game.getName() }}
     </a>
   </h3>
-  <h1 *ngIf="context == 'details'" class="h1 c-game-title__h">
+  <h1 *ngIf="context === 'details'" class="h1 c-game-title__h">
     {{ game.getName() }}
   </h1>
 

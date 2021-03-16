@@ -19,7 +19,7 @@ export class GameDetailsComponent implements OnInit {
   }
 
   loadGame() {
-    let game$ = this.route.data.pipe(map(data => data.game));
+    const game$ = this.route.data.pipe(map(data => data.game));
     game$.subscribe({
       next: game => {
         this.game = game;

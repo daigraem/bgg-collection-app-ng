@@ -13,25 +13,20 @@ import { SortingService } from '@modules/games/services/sorting/sorting.service'
   styleUrls: ['./games-list.component.scss']
 })
 export class GamesListComponent implements OnInit, OnDestroy {
-
-  private filtersSub: Subscription;
-
   updated: string;
   total: number;
   filteredGames: IGame[] = [];
   games: IGame[] = [];
 
-  orderBy = {
-    Title: OrderBy.Title,
-    PlayerCount: OrderBy.PlayerCount,
-    Playtime: OrderBy.Playtime,
-    Rating: OrderBy.Rating,
+  orderByOptions = {
+    title: OrderBy.title,
+    playerCount: OrderBy.playerCount,
+    playtime: OrderBy.playtime,
+    rating: OrderBy.rating,
   };
 
-  order = {
-    ASC: Order.ASC,
-    DESC: Order.DESC
-  };
+  private filtersSub: Subscription;
+  private sortingSub: Subscription;
 
   private _currentFilters: IFilters;
   private _oldFilters: IFilters;
@@ -44,18 +39,18 @@ export class GamesListComponent implements OnInit, OnDestroy {
     this.performFilters(this.currentFilters);
   }
 
-  private _currentSorting: ISorting ;
-  private _oldSorting: ISorting ;
+  private _currentSorting: ISorting;
+  private _oldSorting: ISorting;
   private get currentSorting(): ISorting {
     return this._currentSorting;
   }
-  private set currentSorting(newSorting: ISorting ) {
+  private set currentSorting(newSorting: ISorting) {
     this._oldSorting = this._currentSorting;
     this._currentSorting = newSorting;
     this.performSorting(this.currentSorting);
   }
 
-  loading: boolean = true;
+  loading = true;
 
   constructor(
     private jsonApi: JsonApiService,
@@ -69,6 +64,7 @@ export class GamesListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.filtersSub.unsubscribe();
+    this.sortingSub.unsubscribe();
   }
 
   loadCollection(): void {
@@ -80,6 +76,7 @@ export class GamesListComponent implements OnInit, OnDestroy {
         this.total = collection._totalitems;
 
         this.initFilters();
+        this.initSorting();
       },
       error: err => console.log(err),
       complete: () => {
@@ -99,26 +96,34 @@ export class GamesListComponent implements OnInit, OnDestroy {
     );
   }
 
+  initSorting(): void {
+    this.sortingSub = this.sortingSrv.getSorting().subscribe(
+      res => {
+        this.currentSorting = res;
+      },
+      err => {
+        console.error(`An error occurred: ${err.message}`);
+      }
+    );
+  }
+
   onResetBtnClick(): void {
     this.filterSrv.resetFilters();
     this.sortingSrv.resetSorting();
   }
 
   performFilters(filters: IFilters): void {
-
     this.filteredGames = this.games
       // Freetext
       .filter((game: IGame) => {
-        let filterBy = filters.freetext.toLocaleLowerCase()
-        let matchName = game.getName().toLocaleLowerCase().indexOf(filterBy) !== -1;
-        let matchOriginalName = game.originalname ? game.originalname.toLocaleLowerCase().indexOf(filterBy) !== -1 : false;
+        const filterBy = filters.freetext.toLocaleLowerCase();
+        const matchName = game.getName().toLocaleLowerCase().indexOf(filterBy) !== -1;
+        const matchOriginalName = game.originalname ? game.originalname.toLocaleLowerCase().indexOf(filterBy) !== -1 : false;
 
         return matchName || matchOriginalName;
       })
       // Expansions
-      .filter((game: IGame) => {
-        return !filters.expansions && game.isExpansion() ? false : true;
-      })
+      .filter((game: IGame) => !filters.expansions && game.isExpansion() ? false : true)
       // Players
       .filter((game: IGame) => {
         if (
@@ -152,26 +157,27 @@ export class GamesListComponent implements OnInit, OnDestroy {
         }
 
         return true;
-      })
-      ;
+      });
   }
 
-  performSorting(filters: ISorting ): void {
-
+  performSorting(filters: ISorting): void {
     // Order by
-    if (filters.orderBy == OrderBy.Playtime) {
+    if (filters.orderBy === OrderBy.playtime) {
       this.filteredGames.sort((a, b) => a.stats._playingtime - b.stats._playingtime);
-    } else if (filters.orderBy === OrderBy.Rating) {
+    } else if (filters.orderBy === OrderBy.rating) {
       this.filteredGames.sort((a, b) => a.stats.getRating() - b.stats.getRating());
-    } else if (filters.orderBy === OrderBy.PlayerCount) {
+    } else if (filters.orderBy === OrderBy.playerCount) {
       this.filteredGames.sort((a, b) => a.stats._minplayers - b.stats._minplayers);
     } else {
       this.filteredGames.sort();
     }
 
     // Order
-    if (filters.order == Order.DESC) {
+    if (filters.order === Order.desc) {
       this.filteredGames.reverse();
     }
+
+    // force change detection
+    this.filteredGames = [].concat(this.filteredGames);
   }
 }

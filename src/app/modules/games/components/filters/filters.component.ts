@@ -14,10 +14,10 @@ import { SortingService } from '@modules/games/services/sorting/sorting.service'
 })
 export class FiltersComponent implements OnInit, OnDestroy {
 
-  @Input() delay: number = 300;
+  @Input() delay = 300;
   currentFilters: IFilters;
   private filtersSub: Subscription;
-  private filtersChanged: Subject<object> = new Subject<object>();
+  private filtersChanged: Subject<any> = new Subject<any>();
 
   constructor(
     private filterSrv: FiltersService,

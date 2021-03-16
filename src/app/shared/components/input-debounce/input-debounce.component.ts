@@ -9,8 +9,8 @@ import { map, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators'
 })
 export class InputDebounceComponent implements OnInit {
   @Input() placeholder: string;
-  @Input() delay: number = 300;
-  @Input() minLength: number = 1;
+  @Input() delay = 300;
+  @Input() minLength = 1;
   @Output() value: EventEmitter<string> = new EventEmitter<string>();
 
   public inputValue: string;

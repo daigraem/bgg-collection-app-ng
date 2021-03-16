@@ -9,7 +9,7 @@ import { IGame } from '@data/schema/game.model';
 export class GameTitleComponent implements OnInit {
 
   @Input() game: IGame;
-  @Input() context: string = 'list';
+  @Input() context = 'list';
   versionName: string;
   versionYear: string;
 
@@ -17,8 +17,8 @@ export class GameTitleComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.game.version) {
-      this.versionName =  this.game.version.name['_value'];
-      this.versionYear = this.game.version.yearpublished['_value'];
+      this.versionName =  this.game.version.name._value;
+      this.versionYear = this.game.version.yearpublished._value;
     }
   }
 

@@ -18,11 +18,11 @@ a {
     content: '↑';
   }
 
-  &.is-active-DESC::before {
+  &.is-active-desc::before {
     display: block;
   }
 
-  &.is-active-ASC::after {
+  &.is-active-asc::after {
     display: block;
   }
 }

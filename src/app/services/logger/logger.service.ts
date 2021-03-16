@@ -11,6 +11,6 @@ export interface ILoggerService {
 export class LoggerService implements ILoggerService {
   log(message?: any, ...optionalParams: any[]): void {
     if (!environment.production)
-      console.log(message, ...optionalParams);
+      {console.log(message, ...optionalParams);}
   }
 }

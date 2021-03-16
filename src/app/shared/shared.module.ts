@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NpnSliderModule } from "npn-slider";
+import { NpnSliderModule } from 'npn-slider';
 
 import { RatingsComponent } from './components/ratings/ratings.component';
 import { GameTitleComponent } from './components/game-title/game-title.component';

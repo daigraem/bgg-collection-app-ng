@@ -4,18 +4,18 @@
   <thead>
     <tr>
       <th scope="col" class="c-games-list__th c-games-list__th--image">
-        <app-orderby-filter label="Title" [orderBy]="orderBy.Title"></app-orderby-filter>
+        <app-orderby-filter label="Title" [orderBy]="orderByOptions.title"></app-orderby-filter>
       </th>
       <th scope="col" class="c-games-list__th">
       </th>
       <th scope="col" class="c-games-list__th --attributes">
-        <app-orderby-filter label="Players" [orderBy]="orderBy.PlayerCount"></app-orderby-filter>
+        <app-orderby-filter label="Players" [orderBy]="orderByOptions.playerCount"></app-orderby-filter>
       </th>
       <th scope="col" class="c-games-list__th --attributes">
-        <app-orderby-filter label="Playtime" [orderBy]="orderBy.Playtime"></app-orderby-filter>
+        <app-orderby-filter label="Playtime" [orderBy]="orderByOptions.playtime"></app-orderby-filter>
       </th>
       <th scope="col" class="c-games-list__th --attributes">
-        <app-orderby-filter label="BGG Rating" [orderBy]="orderBy.Rating"></app-orderby-filter>
+        <app-orderby-filter label="BGG Rating" [orderBy]="orderByOptions.rating"></app-orderby-filter>
       </th>
     </tr>
   </thead>

@@ -1,7 +1,7 @@
 import { IDeserializable } from './deserializable.model';
 
 export interface IGameStats {
-  rating: object;
+  rating: any;
   _minplayers?: number;
   _maxplayers?: number;
   _playingtime?: number;
@@ -13,7 +13,7 @@ export interface IGameStats {
 }
 
 export class GameStats implements IGameStats, IDeserializable {
-  rating: object;
+  rating: any;
   _minplayers?: number;
   _maxplayers?: number;
   _playingtime?: number;
@@ -29,7 +29,7 @@ export class GameStats implements IGameStats, IDeserializable {
   };
 
   getRating(): number {
-    return this.rating['average']['_value'];
+    return this.rating.average._value;
   };
 
   deserialize(input: any): this {

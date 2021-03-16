@@ -9,12 +9,12 @@ import { LoggerService } from '@services/logger/logger.service';
 export class SortingService {
 
   private initialSorting: ISorting = {
-    orderBy: OrderBy.Title,
-    order: Order.ASC,
+    orderBy: OrderBy.title,
+    order: Order.asc,
   };
   private tracker = new BehaviorSubject<ISorting >(Object.assign({}, this.initialSorting));
   private sortingSub: Subscription;
-  private currentSorting: ISorting ;
+  private currentSorting: ISorting;
 
   constructor(private logger: LoggerService) {
     this.sortingSub = this.getSorting().subscribe(
@@ -31,7 +31,7 @@ export class SortingService {
     return this.tracker.asObservable();
   }
 
-  setSorting(newSorting: object): void {
+  setSorting(newSorting: any): void {
     this.tracker.next(Object.assign(this.currentSorting, newSorting));
 
     this.logger.log(`Sorting changed:`);

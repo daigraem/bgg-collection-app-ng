@@ -15,11 +15,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { CacheMapService } from '@data/services/cache/cache-map.service';
 import { httpInterceptorProviders } from '@data/interceptors';
 
-export function initializeApp(appConfigService: AppConfigService) {
-  return (): Promise<any> => {
-    return appConfigService.load();
-  };
-}
+export const initializeApp = (appConfigService: AppConfigService) => (): Promise<any> => appConfigService.load();
 
 @NgModule({
   declarations: [

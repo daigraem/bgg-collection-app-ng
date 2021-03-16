@@ -24,6 +24,6 @@ export class CacheMapService implements Cache {
       if ((Date.now() - entry.entryTime) > MAX_CACHE_AGE) {
         this.cacheMap.delete(entry.url);
       }
-    })
+    });
   }
 }
