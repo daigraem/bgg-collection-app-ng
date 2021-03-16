@@ -40,14 +40,12 @@ export class FiltersService {
   setFilters(newFilters: any): void {
     this.tracker.next(Object.assign(this.currentFilters, newFilters));
 
-    this.logger.log(`Filters changed:`);
-    this.logger.log(newFilters);
+    this.logger.log(`Filters changed:`, newFilters);
   }
 
   resetFilters(): void {
     this.tracker.next(Object.assign(this.currentFilters, this.initialFilters));
 
-    this.logger.log(`Filters reset to:`);
-    this.logger.log(this.initialFilters);
+    this.logger.log(`Filters reset to:`, this.initialFilters);
   }
 }

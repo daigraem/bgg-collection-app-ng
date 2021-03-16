@@ -34,14 +34,12 @@ export class SortingService {
   setSorting(newSorting: any): void {
     this.tracker.next(Object.assign(this.currentSorting, newSorting));
 
-    this.logger.log(`Sorting changed:`);
-    this.logger.log(newSorting);
+    this.logger.log(`Sorting changed:`, newSorting);
   }
 
   resetSorting(): void {
     this.tracker.next(Object.assign(this.currentSorting, this.initialSorting));
 
-    this.logger.log(`Sorting reset to:`);
-    this.logger.log(this.initialSorting);
+    this.logger.log(`Sorting reset to:`, this.initialSorting);
   }
 }
