@@ -24,7 +24,7 @@ export class GameDetailsComponent implements OnInit {
       next: game => {
         this.game = game;
       },
-      error: err => console.log(err)
+      error: err => console.error(err)
     });
   }
 

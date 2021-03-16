@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpResponse } from '@angular/common/http';
 import { finalize, tap } from 'rxjs/operators';
+import { LoggerService } from '@services/logger/logger.service';
 
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {
+
+  constructor(private logger: LoggerService) { }
+
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const startTime = Date.now();
     let status: string;
@@ -27,6 +31,6 @@ export class LoggingInterceptor implements HttpInterceptor {
     );
   }
   private logDetails(msg: string) {
-    console.log(msg);
+    this.logger.log(msg);
   }
 }

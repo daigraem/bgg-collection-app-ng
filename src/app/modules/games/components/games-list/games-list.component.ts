@@ -76,7 +76,7 @@ export class GamesListComponent implements OnInit, OnDestroy {
         this.initFilters();
         this.initSorting();
       },
-      error: err => console.log(err),
+      error: err => console.error(err),
       complete: () => {
         this.loading = false;
       }
