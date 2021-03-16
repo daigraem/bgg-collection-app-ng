@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OrderbyFilterComponent } from './orderby-filter.component';
 
@@ -6,7 +6,7 @@ describe('OrderbyFilterComponent', () => {
   let component: OrderbyFilterComponent;
   let fixture: ComponentFixture<OrderbyFilterComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ OrderbyFilterComponent ]
     })
