@@ -16,7 +16,7 @@ export class InputDebounceComponent implements OnInit {
   public inputValue: string;
 
   constructor(private elementRef: ElementRef) {
-    fromEvent(elementRef.nativeElement, 'keyup').pipe(
+    fromEvent(this.elementRef.nativeElement, 'keyup').pipe(
       map((event: any) => event.target.value),
       filter(res => res.length > this.minLength || !res),
       debounceTime(this.delay),

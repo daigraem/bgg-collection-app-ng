@@ -15,13 +15,13 @@ export class OrderbyFilterComponent implements OnInit, OnDestroy {
   activeClassname = '';
 
   private currentFilters: ISorting;
-  private filtersSub: Subscription;
+  private subscription = new Subscription();
   private order: Order = Order.asc;
 
   constructor(private sortingService: SortingService) { }
 
   ngOnInit(): void {
-    this.filtersSub = this.sortingService.getSorting().subscribe(
+    this.subscription.add(this.sortingService.getSorting().subscribe(
       res => {
         this.currentFilters = res;
         this.setActiveClassname();
@@ -29,11 +29,11 @@ export class OrderbyFilterComponent implements OnInit, OnDestroy {
       err => {
         console.error(`An error occurred: ${err.message}`);
       }
-    );
+    ));
   }
 
   ngOnDestroy(): void {
-    this.filtersSub.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   changeOrder(): void {

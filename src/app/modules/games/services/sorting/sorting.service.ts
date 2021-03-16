@@ -13,18 +13,18 @@ export class SortingService {
     order: Order.asc,
   };
   private tracker = new BehaviorSubject<ISorting >(Object.assign({}, this.initialSorting));
-  private sortingSub: Subscription;
+  private subscription = new Subscription();
   private currentSorting: ISorting;
 
   constructor(private logger: LoggerService) {
-    this.sortingSub = this.getSorting().subscribe(
+    this.subscription.add(this.getSorting().subscribe(
       res => {
         this.currentSorting = res;
       },
       err => {
         console.error(`An error occurred: ${err.message}`);
       }
-    );
+    ));
   }
 
   getSorting(): Observable<ISorting > {

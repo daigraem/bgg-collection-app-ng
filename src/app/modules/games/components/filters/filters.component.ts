@@ -4,7 +4,6 @@ import { Subscription, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { IFilters } from '@data/schema/filters.model';
-import { LoggerService } from '@services/logger/logger.service';
 import { SortingService } from '@modules/games/services/sorting/sorting.service';
 
 @Component({
@@ -16,24 +15,23 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
   @Input() delay = 300;
   currentFilters: IFilters;
-  private filtersSub: Subscription;
+  private subscritpion = new Subscription();
   private filtersChanged: Subject<any> = new Subject<any>();
 
   constructor(
     private filterSrv: FiltersService,
-    private sortingSrv: SortingService,
-    private logger: LoggerService
+    private sortingSrv: SortingService
   ) { }
 
   ngOnInit(): void {
-    this.filtersSub = this.filterSrv.getFilters().subscribe(
+    this.subscritpion.add(this.filterSrv.getFilters().subscribe(
       res => {
         this.currentFilters = res;
       },
       err => {
         console.error(`An error occurred: ${err.message}`);
       }
-    );
+    ));
 
     this.filtersChanged.pipe(
       debounceTime(300),
@@ -42,7 +40,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.filtersSub.unsubscribe();
+    this.subscritpion.unsubscribe();
   }
 
   toggleExpansions(): void {

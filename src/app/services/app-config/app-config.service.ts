@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { LoggerService } from '@services/logger/logger.service';
 
 export interface IAppConfig {
@@ -11,7 +10,7 @@ export interface IAppConfig {
 export class AppConfigService {
   static config: IAppConfig;
 
-  constructor(private http: HttpClient, private logger: LoggerService) { }
+  constructor(private logger: LoggerService) { }
 
   load() {
     const jsonFile = `./assets/config/config.json`;

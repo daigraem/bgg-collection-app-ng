@@ -25,8 +25,7 @@ export class GamesListComponent implements OnInit, OnDestroy {
     rating: OrderBy.rating,
   };
 
-  private filtersSub: Subscription;
-  private sortingSub: Subscription;
+  private subscription = new Subscription();
 
   private _currentFilters: IFilters;
   private _oldFilters: IFilters;
@@ -63,12 +62,11 @@ export class GamesListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.filtersSub.unsubscribe();
-    this.sortingSub.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   loadCollection(): void {
-    this.jsonApi.getCollection().subscribe({
+    this.subscription.add(this.jsonApi.getCollection().subscribe({
       next: collection => {
         this.games = collection.item;
         this.filteredGames = this.games;
@@ -82,29 +80,29 @@ export class GamesListComponent implements OnInit, OnDestroy {
       complete: () => {
         this.loading = false;
       }
-    });
+    }));
   }
 
   initFilters(): void {
-    this.filtersSub = this.filterSrv.getFilters().subscribe(
+    this.subscription.add(this.filterSrv.getFilters().subscribe(
       res => {
         this.currentFilters = res;
       },
       err => {
         console.error(`An error occurred: ${err.message}`);
       }
-    );
+    ));
   }
 
   initSorting(): void {
-    this.sortingSub = this.sortingSrv.getSorting().subscribe(
+    this.subscription.add(this.sortingSrv.getSorting().subscribe(
       res => {
         this.currentSorting = res;
       },
       err => {
         console.error(`An error occurred: ${err.message}`);
       }
-    );
+    ));
   }
 
   onResetBtnClick(): void {

@@ -19,18 +19,18 @@ export class FiltersService {
     expansions: true
   };
   private tracker = new BehaviorSubject<IFilters>(Object.assign({}, this.initialFilters));
-  private filtersSub: Subscription;
+  private subscription = new Subscription();
   private currentFilters: IFilters;
 
   constructor(private logger: LoggerService) {
-    this.filtersSub = this.getFilters().subscribe(
+    this.subscription.add(this.getFilters().subscribe(
       res => {
         this.currentFilters = res;
       },
       err => {
         console.error(`An error occurred: ${err.message}`);
       }
-    );
+    ));
   }
 
   getFilters(): Observable<IFilters> {
