@@ -21,6 +21,8 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "radix": [ "error", "as-needed" ],
+        "no-underscore-dangle": [ "off" ],
         "@angular-eslint/component-selector": [
           "error",
           {

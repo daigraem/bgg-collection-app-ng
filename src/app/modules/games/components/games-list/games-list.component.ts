@@ -17,6 +17,7 @@ export class GamesListComponent implements OnInit, OnDestroy {
   total: number;
   filteredGames: IGame[] = [];
   games: IGame[] = [];
+  loading = true;
 
   orderByOptions = {
     title: OrderBy.title,
@@ -48,8 +49,6 @@ export class GamesListComponent implements OnInit, OnDestroy {
     this._currentSorting = newSorting;
     this.performSorting(this.currentSorting);
   }
-
-  loading = true;
 
   constructor(
     private jsonApi: JsonApiService,
