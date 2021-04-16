@@ -11,15 +11,20 @@ const routes: Routes = [
       {
         path: 'games',
         loadChildren: () =>
-          import('@modules/games/games.module').then(m => m.GamesModule),
-      }
-    ]
+          import('@modules/games/games.module').then((m) => m.GamesModule),
+      },
+    ],
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true, relativeLinkResolution: 'legacy' })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      useHash: true,
+      relativeLinkResolution: 'legacy',
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

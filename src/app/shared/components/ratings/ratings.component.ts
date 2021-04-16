@@ -3,15 +3,12 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-ratings',
   templateUrl: './ratings.component.html',
-  styleUrls: ['./ratings.component.scss']
+  styleUrls: ['./ratings.component.scss'],
 })
 export class RatingsComponent implements OnInit {
-
   @Input() rating: number;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

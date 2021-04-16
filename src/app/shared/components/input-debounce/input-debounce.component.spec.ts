@@ -6,12 +6,13 @@ describe('InputDebounceComponent', () => {
   let component: InputDebounceComponent;
   let fixture: ComponentFixture<InputDebounceComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ InputDebounceComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [InputDebounceComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(InputDebounceComponent);

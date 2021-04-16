@@ -1,5 +1,4 @@
 <div class="row">
-
   <div class="col">
     <app-game-title [game]="game" context="details"></app-game-title>
 
@@ -11,11 +10,9 @@
       <dt>BGG&nbsp;Rating</dt>
       <dd><app-ratings [rating]="game.stats.getRating()"></app-ratings></dd>
     </dl>
-
   </div>
 
   <div class="col-md-6 col-sm-12 order-first mb-3">
     <app-game-image [game]="game" context="details"></app-game-image>
   </div>
-
 </div>

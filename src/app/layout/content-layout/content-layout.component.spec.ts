@@ -6,12 +6,13 @@ describe('ContentLayoutComponent', () => {
   let component: ContentLayoutComponent;
   let fixture: ComponentFixture<ContentLayoutComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ContentLayoutComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ContentLayoutComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ContentLayoutComponent);

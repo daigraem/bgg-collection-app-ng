@@ -7,13 +7,14 @@ describe('GameDetailsComponent', () => {
   let component: GameDetailsComponent;
   let fixture: ComponentFixture<GameDetailsComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [ RouterTestingModule ],
-      declarations: [ GameDetailsComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule],
+        declarations: [GameDetailsComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GameDetailsComponent);

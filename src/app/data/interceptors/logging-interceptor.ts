@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpResponse } from '@angular/common/http';
+import {
+  HttpInterceptor,
+  HttpRequest,
+  HttpHandler,
+  HttpResponse,
+} from '@angular/common/http';
 import { finalize, tap } from 'rxjs/operators';
 import { LoggerService } from '@services/logger/logger.service';
 
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {
-
-  constructor(private logger: LoggerService) { }
+  constructor(private logger: LoggerService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const startTime = Date.now();
@@ -14,13 +18,13 @@ export class LoggingInterceptor implements HttpInterceptor {
 
     return next.handle(req).pipe(
       tap(
-        event => {
+        (event) => {
           status = '';
           if (event instanceof HttpResponse) {
             status = 'succeeded';
           }
         },
-        error => status = 'failed'
+        (error) => (status = 'failed')
       ),
       finalize(() => {
         const elapsedTime = Date.now() - startTime;

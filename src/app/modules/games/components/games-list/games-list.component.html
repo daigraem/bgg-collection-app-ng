@@ -4,18 +4,29 @@
   <thead>
     <tr>
       <th scope="col" class="c-games-list__th c-games-list__th--image">
-        <app-orderby-filter label="Title" [orderBy]="orderByOptions.title"></app-orderby-filter>
+        <app-orderby-filter
+          label="Title"
+          [orderBy]="orderByOptions.title"
+        ></app-orderby-filter>
       </th>
-      <th scope="col" class="c-games-list__th">
+      <th scope="col" class="c-games-list__th"></th>
+      <th scope="col" class="c-games-list__th --attributes">
+        <app-orderby-filter
+          label="Players"
+          [orderBy]="orderByOptions.playerCount"
+        ></app-orderby-filter>
       </th>
       <th scope="col" class="c-games-list__th --attributes">
-        <app-orderby-filter label="Players" [orderBy]="orderByOptions.playerCount"></app-orderby-filter>
+        <app-orderby-filter
+          label="Playtime"
+          [orderBy]="orderByOptions.playtime"
+        ></app-orderby-filter>
       </th>
       <th scope="col" class="c-games-list__th --attributes">
-        <app-orderby-filter label="Playtime" [orderBy]="orderByOptions.playtime"></app-orderby-filter>
-      </th>
-      <th scope="col" class="c-games-list__th --attributes">
-        <app-orderby-filter label="BGG Rating" [orderBy]="orderByOptions.rating"></app-orderby-filter>
+        <app-orderby-filter
+          label="BGG Rating"
+          [orderBy]="orderByOptions.rating"
+        ></app-orderby-filter>
       </th>
     </tr>
   </thead>
@@ -26,26 +37,39 @@
       <span class="sr-only">Loading...</span>
     </div>
   </div>
-  <cdk-virtual-scroll-viewport itemSize="150" class="c-games-list__viewport" *ngIf="!loading">
+  <cdk-virtual-scroll-viewport
+    itemSize="150"
+    class="c-games-list__viewport"
+    *ngIf="!loading"
+  >
     <table class="c-games-list table table-hover">
-    <tr *cdkVirtualFor="let game of filteredGames" class="c-games-list__row">
-      <td class="c-games-list__cell c-games-list__cell--image">
-        <app-game-image [game]="game"></app-game-image>
-      </td>
-      <td class="c-games-list__cell --title">
-        <app-game-title [game]="game"></app-game-title>
-      </td>
-      <td class="c-games-list__cell --attributes">{{ game.stats.getPlayerCount() }}</td>
-      <td class="c-games-list__cell --attributes">{{ game.stats.getPlaytime() }}</td>
-      <td class="c-games-list__cell --attributes">
-        <app-ratings [rating]="game.stats.getRating()"></app-ratings>
-      </td>
-    </tr>
+      <tr *cdkVirtualFor="let game of filteredGames" class="c-games-list__row">
+        <td class="c-games-list__cell c-games-list__cell--image">
+          <app-game-image [game]="game"></app-game-image>
+        </td>
+        <td class="c-games-list__cell --title">
+          <app-game-title [game]="game"></app-game-title>
+        </td>
+        <td class="c-games-list__cell --attributes">
+          {{ game.stats.getPlayerCount() }}
+        </td>
+        <td class="c-games-list__cell --attributes">
+          {{ game.stats.getPlaytime() }}
+        </td>
+        <td class="c-games-list__cell --attributes">
+          <app-ratings [rating]="game.stats.getRating()"></app-ratings>
+        </td>
+      </tr>
 
-    <tr *ngIf="filteredGames.length === 0" class="text-center">
-      No games match the filter criteria. <a (click)="onResetBtnClick()" href="#">Clear filters</a>
-    </tr>
-  </table>
+      <tr *ngIf="filteredGames.length === 0" class="text-center">
+        No games match the filter criteria.
+        <a (click)="onResetBtnClick()" href="#">Clear filters</a>
+      </tr>
+    </table>
   </cdk-virtual-scroll-viewport>
 
-<span>{{ total }} games &bull; Last updated: {{ updated | date:'longDate' }}</span>
+  <span
+    >{{ total }} games &bull; Last updated:
+    {{ updated | date: "longDate" }}</span
+  >
+</div>

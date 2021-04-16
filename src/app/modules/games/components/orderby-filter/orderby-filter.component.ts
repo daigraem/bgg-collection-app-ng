@@ -1,15 +1,14 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { ISorting , Order, OrderBy } from '@data/schema/sorting.model';
+import { ISorting, Order, OrderBy } from '@data/schema/sorting.model';
 import { Subscription } from 'rxjs';
 import { SortingService } from '@modules/games/services/sorting/sorting.service';
 
 @Component({
   selector: 'app-orderby-filter',
   templateUrl: './orderby-filter.component.html',
-  styleUrls: ['./orderby-filter.component.scss']
+  styleUrls: ['./orderby-filter.component.scss'],
 })
 export class OrderbyFilterComponent implements OnInit, OnDestroy {
-
   @Input() label: string;
   @Input() orderBy: OrderBy;
   activeClassname = '';
@@ -18,18 +17,20 @@ export class OrderbyFilterComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   private order: Order = Order.asc;
 
-  constructor(private sortingService: SortingService) { }
+  constructor(private sortingService: SortingService) {}
 
   ngOnInit(): void {
-    this.subscription.add(this.sortingService.getSorting().subscribe(
-      res => {
-        this.currentFilters = res;
-        this.setActiveClassname();
-      },
-      err => {
-        console.error(`An error occurred: ${err.message}`);
-      }
-    ));
+    this.subscription.add(
+      this.sortingService.getSorting().subscribe(
+        (res) => {
+          this.currentFilters = res;
+          this.setActiveClassname();
+        },
+        (err) => {
+          console.error(`An error occurred: ${err.message}`);
+        }
+      )
+    );
   }
 
   ngOnDestroy(): void {
@@ -41,7 +42,7 @@ export class OrderbyFilterComponent implements OnInit, OnDestroy {
 
     const newFilters = {
       orderBy: this.orderBy,
-      order: this.order
+      order: this.order,
     };
 
     this.sortingService.setSorting(newFilters);

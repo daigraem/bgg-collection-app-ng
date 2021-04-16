@@ -15,36 +15,34 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { CacheMapService } from '@data/services/cache/cache-map.service';
 import { httpInterceptorProviders } from '@data/interceptors';
 
-export const initializeApp = (appConfigService: AppConfigService) => (): Promise<any> => appConfigService.load();
+export const initializeApp = (
+  appConfigService: AppConfigService
+) => (): Promise<any> => appConfigService.load();
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ContentLayoutComponent,
-    FooterComponent
-  ],
+  declarations: [AppComponent, ContentLayoutComponent, FooterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
     DataModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     httpInterceptorProviders,
     CacheMapService,
     {
       provide: Cache,
-      useClass: CacheMapService
+      useClass: CacheMapService,
     },
     AppConfigService,
     {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
       multi: true,
-      deps: [AppConfigService]
-    }
+      deps: [AppConfigService],
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

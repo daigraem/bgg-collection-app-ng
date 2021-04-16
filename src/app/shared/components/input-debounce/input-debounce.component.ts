@@ -1,11 +1,23 @@
-import { Component, OnInit, Input, Output, ElementRef, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  ElementRef,
+  EventEmitter,
+} from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { map, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
+import {
+  map,
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-input-debounce',
   templateUrl: './input-debounce.component.html',
-  styleUrls: ['./input-debounce.component.scss']
+  styleUrls: ['./input-debounce.component.scss'],
 })
 export class InputDebounceComponent implements OnInit {
   @Input() placeholder: string;
@@ -16,15 +28,15 @@ export class InputDebounceComponent implements OnInit {
   public inputValue: string;
 
   constructor(private elementRef: ElementRef) {
-    fromEvent(this.elementRef.nativeElement, 'keyup').pipe(
-      map((event: any) => event.target.value),
-      filter(res => res.length > this.minLength || !res),
-      debounceTime(this.delay),
-      distinctUntilChanged()
-    ).subscribe(input => this.value.emit(input));
+    fromEvent(this.elementRef.nativeElement, 'keyup')
+      .pipe(
+        map((event: any) => event.target.value),
+        filter((res) => res.length > this.minLength || !res),
+        debounceTime(this.delay),
+        distinctUntilChanged()
+      )
+      .subscribe((input) => this.value.emit(input));
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

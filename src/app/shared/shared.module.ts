@@ -10,12 +10,7 @@ import { GameImageComponent } from './components/game-image/game-image.component
 import { InputDebounceComponent } from '../shared/components/input-debounce/input-debounce.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   declarations: [
     RatingsComponent,
     GameTitleComponent,
@@ -32,6 +27,6 @@ import { InputDebounceComponent } from '../shared/components/input-debounce/inpu
     GameTitleComponent,
     GameImageComponent,
     InputDebounceComponent,
-  ]
+  ],
 })
 export class SharedModule {}

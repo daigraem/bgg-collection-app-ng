@@ -9,31 +9,30 @@ import { ICollection, Collection } from '@data/schema/collection.model';
 import { AppConfigService } from '@services/app-config/app-config.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JsonApiService {
-
   private apiUrl = `${AppConfigService.config.apiUrl}/collection`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getResponse(): Observable<IAjaxResponse<ICollection>> {
     return this.http.get<IAjaxResponse<ICollection>>(this.apiUrl);
   }
 
   getCollection(): Observable<ICollection> {
-    return this.getResponse()
-      .pipe(
-        map((response: IAjaxResponse<ICollection>): ICollection => response.data),
-        map(data => new Collection().deserialize(data))
-      );
+    return this.getResponse().pipe(
+      map((response: IAjaxResponse<ICollection>): ICollection => response.data),
+      map((data) => new Collection().deserialize(data))
+    );
   }
 
   getGame(id: number): Observable<IGame | undefined> {
-    return this.getCollection()
-      .pipe(
-        map((response: ICollection) => response.item.find(g => g._objectid === id)),
-        map(data => new Game().deserialize(data))
-      );
+    return this.getCollection().pipe(
+      map((response: ICollection) =>
+        response.item.find((g) => g._objectid === id)
+      ),
+      map((data) => new Game().deserialize(data))
+    );
   }
 }

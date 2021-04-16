@@ -4,33 +4,36 @@ import { IFilters } from '@data/schema/filters.model';
 import { LoggerService } from '@services/logger/logger.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FiltersService {
-
   private initialFilters: IFilters = {
     freetext: '',
-    players: [1,12],
-    playersLimit: [1,12],
-    playtime: [15,180],
-    playtimeLimit: [15,180],
-    rating: [1,10],
-    ratingLimit: [1,10],
-    expansions: true
+    players: [1, 12],
+    playersLimit: [1, 12],
+    playtime: [15, 180],
+    playtimeLimit: [15, 180],
+    rating: [1, 10],
+    ratingLimit: [1, 10],
+    expansions: true,
   };
-  private tracker = new BehaviorSubject<IFilters>(Object.assign({}, this.initialFilters));
+  private tracker = new BehaviorSubject<IFilters>(
+    Object.assign({}, this.initialFilters)
+  );
   private subscription = new Subscription();
   private currentFilters: IFilters;
 
   constructor(private logger: LoggerService) {
-    this.subscription.add(this.getFilters().subscribe(
-      res => {
-        this.currentFilters = res;
-      },
-      err => {
-        console.error(`An error occurred: ${err.message}`);
-      }
-    ));
+    this.subscription.add(
+      this.getFilters().subscribe(
+        (res) => {
+          this.currentFilters = res;
+        },
+        (err) => {
+          console.error(`An error occurred: ${err.message}`);
+        }
+      )
+    );
   }
 
   getFilters(): Observable<IFilters> {

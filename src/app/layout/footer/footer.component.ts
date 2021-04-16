@@ -4,15 +4,14 @@ import { AppConfigService } from '@services/app-config/app-config.service';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
   text: string;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.text = AppConfigService.config.footerText;
   }
-
 }

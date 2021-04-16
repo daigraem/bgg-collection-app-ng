@@ -14,7 +14,7 @@ export class Collection implements ICollection, IDeserializable {
 
   deserialize(input: any): this {
     Object.assign(this, input.items);
-    this.item = this.item.map(item => new Game().deserialize(item));
+    this.item = this.item.map((item) => new Game().deserialize(item));
 
     return this;
   }

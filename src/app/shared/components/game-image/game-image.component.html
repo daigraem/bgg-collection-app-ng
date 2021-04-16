@@ -1,4 +1,12 @@
 <figure class="c-game-image --{{ context }}">
-  <img [src]="src" alt="{{ game.getName() }}" class="c-game-image__img --{{ context }}">
-  <a [routerLink]="['/games', game._objectid]" class="c-game-image__link" *ngIf="context === 'list'"></a>
+  <img
+    [src]="src"
+    alt="{{ game.getName() }}"
+    class="c-game-image__img --{{ context }}"
+  />
+  <a
+    [routerLink]="['/games', game._objectid]"
+    class="c-game-image__link"
+    *ngIf="context === 'list'"
+  ></a>
 </figure>

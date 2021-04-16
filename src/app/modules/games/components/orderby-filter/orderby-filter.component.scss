@@ -3,7 +3,8 @@ a {
   cursor: pointer;
   color: currentColor;
 
-  &::before, &::after {
+  &::before,
+  &::after {
     display: none;
     position: absolute;
     right: 0;
@@ -12,11 +13,11 @@ a {
   }
 
   &::before {
-    content: '↓';
+    content: "↓";
   }
 
   &::after {
-    content: '↑';
+    content: "↑";
   }
 
   &.is-active-desc::before {

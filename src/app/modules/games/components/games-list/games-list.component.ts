@@ -4,13 +4,13 @@ import { JsonApiService } from '@data/services/json-api/json-api.service';
 import { FiltersService } from '@modules/games/services/filters/filters.service';
 import { Subscription } from 'rxjs';
 import { IFilters } from '@data/schema/filters.model';
-import { ISorting , OrderBy, Order } from '@data/schema/sorting.model';
+import { ISorting, OrderBy, Order } from '@data/schema/sorting.model';
 import { SortingService } from '@modules/games/services/sorting/sorting.service';
 
 @Component({
   selector: 'app-games-list',
   templateUrl: './games-list.component.html',
-  styleUrls: ['./games-list.component.scss']
+  styleUrls: ['./games-list.component.scss'],
 })
 export class GamesListComponent implements OnInit, OnDestroy {
   updated: string;
@@ -53,8 +53,8 @@ export class GamesListComponent implements OnInit, OnDestroy {
   constructor(
     private jsonApi: JsonApiService,
     private filterSrv: FiltersService,
-    private sortingSrv: SortingService,
-  ) { }
+    private sortingSrv: SortingService
+  ) {}
 
   ngOnInit(): void {
     this.loadCollection();
@@ -65,43 +65,49 @@ export class GamesListComponent implements OnInit, OnDestroy {
   }
 
   loadCollection(): void {
-    this.subscription.add(this.jsonApi.getCollection().subscribe({
-      next: collection => {
-        this.games = collection.item;
-        this.filteredGames = this.games;
-        this.updated = collection._pubdate;
-        this.total = collection._totalitems;
+    this.subscription.add(
+      this.jsonApi.getCollection().subscribe({
+        next: (collection) => {
+          this.games = collection.item;
+          this.filteredGames = this.games;
+          this.updated = collection._pubdate;
+          this.total = collection._totalitems;
 
-        this.initFilters();
-        this.initSorting();
-      },
-      error: err => console.error(err),
-      complete: () => {
-        this.loading = false;
-      }
-    }));
+          this.initFilters();
+          this.initSorting();
+        },
+        error: (err) => console.error(err),
+        complete: () => {
+          this.loading = false;
+        },
+      })
+    );
   }
 
   initFilters(): void {
-    this.subscription.add(this.filterSrv.getFilters().subscribe(
-      res => {
-        this.currentFilters = res;
-      },
-      err => {
-        console.error(`An error occurred: ${err.message}`);
-      }
-    ));
+    this.subscription.add(
+      this.filterSrv.getFilters().subscribe(
+        (res) => {
+          this.currentFilters = res;
+        },
+        (err) => {
+          console.error(`An error occurred: ${err.message}`);
+        }
+      )
+    );
   }
 
   initSorting(): void {
-    this.subscription.add(this.sortingSrv.getSorting().subscribe(
-      res => {
-        this.currentSorting = res;
-      },
-      err => {
-        console.error(`An error occurred: ${err.message}`);
-      }
-    ));
+    this.subscription.add(
+      this.sortingSrv.getSorting().subscribe(
+        (res) => {
+          this.currentSorting = res;
+        },
+        (err) => {
+          console.error(`An error occurred: ${err.message}`);
+        }
+      )
+    );
   }
 
   onResetBtnClick(): void {
@@ -114,18 +120,25 @@ export class GamesListComponent implements OnInit, OnDestroy {
       // Freetext
       .filter((game: IGame) => {
         const filterBy = filters.freetext.toLocaleLowerCase();
-        const matchName = game.getName().toLocaleLowerCase().indexOf(filterBy) !== -1;
-        const matchOriginalName = game.originalname ? game.originalname.toLocaleLowerCase().indexOf(filterBy) !== -1 : false;
+        const matchName =
+          game.getName().toLocaleLowerCase().indexOf(filterBy) !== -1;
+        const matchOriginalName = game.originalname
+          ? game.originalname.toLocaleLowerCase().indexOf(filterBy) !== -1
+          : false;
 
         return matchName || matchOriginalName;
       })
       // Expansions
-      .filter((game: IGame) => !filters.expansions && game.isExpansion() ? false : true)
+      .filter((game: IGame) =>
+        !filters.expansions && game.isExpansion() ? false : true
+      )
       // Players
       .filter((game: IGame) => {
         if (
-          (game.stats._minplayers < filters.players[0] && filters.players[0] > filters.playersLimit[0]) ||
-          (game.stats._maxplayers > filters.players[1] && filters.players[1] < filters.playersLimit[1])
+          (game.stats._minplayers < filters.players[0] &&
+            filters.players[0] > filters.playersLimit[0]) ||
+          (game.stats._maxplayers > filters.players[1] &&
+            filters.players[1] < filters.playersLimit[1])
         ) {
           return false;
         }
@@ -135,8 +148,10 @@ export class GamesListComponent implements OnInit, OnDestroy {
       // Playtime
       .filter((game: IGame) => {
         if (
-          (game.stats._minplaytime < filters.playtime[0] && filters.playtime[0] > filters.playtimeLimit[0]) ||
-          (game.stats._maxplaytime > filters.playtime[1] && filters.playtime[1] < filters.playtimeLimit[1])
+          (game.stats._minplaytime < filters.playtime[0] &&
+            filters.playtime[0] > filters.playtimeLimit[0]) ||
+          (game.stats._maxplaytime > filters.playtime[1] &&
+            filters.playtime[1] < filters.playtimeLimit[1])
         ) {
           return false;
         }
@@ -147,8 +162,10 @@ export class GamesListComponent implements OnInit, OnDestroy {
       .filter((game: IGame) => {
         const rating = game.stats.getRating();
         if (
-          (rating < filters.rating[0] && filters.rating[0] > filters.ratingLimit[0]) ||
-          (rating > filters.rating[1] && filters.rating[1] < filters.ratingLimit[1])
+          (rating < filters.rating[0] &&
+            filters.rating[0] > filters.ratingLimit[0]) ||
+          (rating > filters.rating[1] &&
+            filters.rating[1] < filters.ratingLimit[1])
         ) {
           return false;
         }
@@ -160,11 +177,17 @@ export class GamesListComponent implements OnInit, OnDestroy {
   performSorting(filters: ISorting): void {
     // Order by
     if (filters.orderBy === OrderBy.playtime) {
-      this.filteredGames.sort((a, b) => a.stats._playingtime - b.stats._playingtime);
+      this.filteredGames.sort(
+        (a, b) => a.stats._playingtime - b.stats._playingtime
+      );
     } else if (filters.orderBy === OrderBy.rating) {
-      this.filteredGames.sort((a, b) => a.stats.getRating() - b.stats.getRating());
+      this.filteredGames.sort(
+        (a, b) => a.stats.getRating() - b.stats.getRating()
+      );
     } else if (filters.orderBy === OrderBy.playerCount) {
-      this.filteredGames.sort((a, b) => a.stats._minplayers - b.stats._minplayers);
+      this.filteredGames.sort(
+        (a, b) => a.stats._minplayers - b.stats._minplayers
+      );
     } else {
       this.filteredGames.sort();
     }

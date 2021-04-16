@@ -6,11 +6,12 @@ export interface ILoggerService {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoggerService implements ILoggerService {
   log(message?: any, ...optionalParams: any[]): void {
-    if (!environment.production)
-      {console.log(message, ...optionalParams);}
+    if (!environment.production) {
+      console.log(message, ...optionalParams);
+    }
   }
 }

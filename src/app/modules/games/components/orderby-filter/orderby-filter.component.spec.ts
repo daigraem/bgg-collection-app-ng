@@ -6,12 +6,13 @@ describe('OrderbyFilterComponent', () => {
   let component: OrderbyFilterComponent;
   let fixture: ComponentFixture<OrderbyFilterComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ OrderbyFilterComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [OrderbyFilterComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(OrderbyFilterComponent);

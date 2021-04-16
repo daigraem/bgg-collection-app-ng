@@ -1,13 +1,13 @@
 export enum Order {
   asc = 'asc',
-  desc = 'desc'
+  desc = 'desc',
 }
 
 export enum OrderBy {
   title = 'title',
   playerCount = 'playerCount',
   playtime = 'playtime',
-  rating = 'rating'
+  rating = 'rating',
 }
 
 export interface ISorting {

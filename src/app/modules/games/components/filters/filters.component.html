@@ -1,14 +1,24 @@
 <div class="form-row align-items-center" *ngIf="currentFilters">
-
   <div class="col-sm-12 col-lg-4">
     <div class="form-group">
       <label>&nbsp;</label>
-      <app-input-debounce placeholder="Filter by Title" (value)="changeSearch($event)" [delay]="delay">
+      <app-input-debounce
+        placeholder="Filter by Title"
+        (value)="changeSearch($event)"
+        [delay]="delay"
+      >
       </app-input-debounce>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="incl-expansions-checkbox"
-          [checked]="currentFilters.expansions" (change)="toggleExpansions()" />
-        <label class="form-check-label" for="incl-expansions-checkbox">incl.&nbsp;Expansions</label>
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="incl-expansions-checkbox"
+          [checked]="currentFilters.expansions"
+          (change)="toggleExpansions()"
+        />
+        <label class="form-check-label" for="incl-expansions-checkbox"
+          >incl.&nbsp;Expansions</label
+        >
       </div>
     </div>
   </div>
@@ -16,33 +26,53 @@
   <div class="offset-lg-1 col-sm-12 col-lg-2">
     <div class="form-group">
       <label>Players</label>
-      <npn-slider [min]="currentFilters.playersLimit[0]" [max]="currentFilters.playersLimit[1]"
-        [minSelected]="currentFilters.players[0]" [maxSelected]="currentFilters.players[1]" [step]="1"
-        [showStepIndicator]="true" (onChange)="onPlayersSliderChange($event)"></npn-slider>
+      <npn-slider
+        [min]="currentFilters.playersLimit[0]"
+        [max]="currentFilters.playersLimit[1]"
+        [minSelected]="currentFilters.players[0]"
+        [maxSelected]="currentFilters.players[1]"
+        [step]="1"
+        [showStepIndicator]="true"
+        (onChange)="onPlayersSliderChange($event)"
+      ></npn-slider>
     </div>
   </div>
 
   <div class="col-sm-12 col-lg-2">
     <div class="form-group">
       <label>Playtime</label>
-      <npn-slider [min]="currentFilters.playtimeLimit[0]" [max]="currentFilters.playtimeLimit[1]"
-        [minSelected]="currentFilters.playtime[0]" [maxSelected]="currentFilters.playtime[1]" [step]="15"
-        [showStepIndicator]="true" (onChange)="onPlaytimeSliderChange($event)"></npn-slider>
+      <npn-slider
+        [min]="currentFilters.playtimeLimit[0]"
+        [max]="currentFilters.playtimeLimit[1]"
+        [minSelected]="currentFilters.playtime[0]"
+        [maxSelected]="currentFilters.playtime[1]"
+        [step]="15"
+        [showStepIndicator]="true"
+        (onChange)="onPlaytimeSliderChange($event)"
+      ></npn-slider>
     </div>
   </div>
 
   <div class="col-sm-12 col-lg-2">
     <div class="form-group">
       <label>Rating</label>
-      <npn-slider [min]="currentFilters.ratingLimit[0]" [max]="currentFilters.ratingLimit[1]"
-        [minSelected]="currentFilters.rating[0]" [maxSelected]="currentFilters.rating[1]" [step]="1"
-        [showStepIndicator]="true" (onChange)="onRatingSliderChange($event)"></npn-slider>
+      <npn-slider
+        [min]="currentFilters.ratingLimit[0]"
+        [max]="currentFilters.ratingLimit[1]"
+        [minSelected]="currentFilters.rating[0]"
+        [maxSelected]="currentFilters.rating[1]"
+        [step]="1"
+        [showStepIndicator]="true"
+        (onChange)="onRatingSliderChange($event)"
+      ></npn-slider>
     </div>
   </div>
 
   <div class="col-sm-12 col-lg-1">
     <div class="form-group text-right">
-      <button class="btn btn-secondary btn-sm" (click)="onResetBtnClick()">Reset</button>
+      <button class="btn btn-secondary btn-sm" (click)="onResetBtnClick()">
+        Reset
+      </button>
     </div>
   </div>
 </div>

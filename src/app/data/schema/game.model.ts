@@ -30,7 +30,7 @@ export class Game implements IGame, IDeserializable {
 
   isExpansion(): boolean {
     return this._subtype === 'boardgameexpansion';
-  };
+  }
 
   getName(): string {
     return this.name.$;

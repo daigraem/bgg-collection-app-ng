@@ -15,7 +15,8 @@
 
   color: #fff;
 
-  &::before, &::after {
+  &::before,
+  &::after {
     content: "";
     position: absolute;
     left: 0;
@@ -42,7 +43,8 @@
   &--2 {
     background-color: #b2151f;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       border-top-color: #b2151f;
       border-bottom-color: #b2151f;
     }
@@ -52,7 +54,8 @@
   &--4 {
     background-color: #d71925;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       border-top-color: #d71925;
       border-bottom-color: #d71925;
     }
@@ -60,18 +63,20 @@
 
   &--5,
   &--6 {
-    background-color: #5369A2;
+    background-color: #5369a2;
 
-    &::before, &::after {
-      border-top-color: #5369A2;
-      border-bottom-color: #5369A2;
+    &::before,
+    &::after {
+      border-top-color: #5369a2;
+      border-bottom-color: #5369a2;
     }
   }
 
   &--7 {
     background-color: #1978b3;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       border-top-color: #1978b3;
       border-bottom-color: #1978b3;
     }
@@ -80,7 +85,8 @@
   &--8 {
     background-color: #1d804c;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       border-top-color: #1d804c;
       border-bottom-color: #1d804c;
     }
@@ -90,7 +96,8 @@
   &--10 {
     background-color: #186b40;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       border-top-color: #186b40;
       border-bottom-color: #186b40;
     }

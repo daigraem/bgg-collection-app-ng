@@ -7,13 +7,14 @@ describe('GamesListComponent', () => {
   let component: GamesListComponent;
   let fixture: ComponentFixture<GamesListComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ],
-      declarations: [ GamesListComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [HttpClientTestingModule],
+        declarations: [GamesListComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GamesListComponent);

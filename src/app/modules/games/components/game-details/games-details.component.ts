@@ -6,10 +6,9 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-game-details',
   templateUrl: './game-details.component.html',
-  styleUrls: ['./game-details.component.scss']
+  styleUrls: ['./game-details.component.scss'],
 })
 export class GameDetailsComponent implements OnInit {
-
   game: IGame;
 
   constructor(private route: ActivatedRoute) {}
@@ -19,13 +18,12 @@ export class GameDetailsComponent implements OnInit {
   }
 
   loadGame() {
-    const game$ = this.route.data.pipe(map(data => data.game));
+    const game$ = this.route.data.pipe(map((data) => data.game));
     game$.subscribe({
-      next: game => {
+      next: (game) => {
         this.game = game;
       },
-      error: err => console.error(err)
+      error: (err) => console.error(err),
     });
   }
-
 }

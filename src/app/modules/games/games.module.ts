@@ -19,12 +19,8 @@ import { OrderbyFilterComponent } from './components/orderby-filter/orderby-filt
     FiltersComponent,
     OrderbyFilterComponent,
   ],
-  imports: [
-    SharedModule,
-    ScrollingModule,
-    GamesRoutingModule
-  ],
+  imports: [SharedModule, ScrollingModule, GamesRoutingModule],
   exports: [],
-  providers: []
+  providers: [],
 })
-export class GamesModule { }
+export class GamesModule {}
