@@ -27,9 +27,14 @@ export class GameStats implements IGameStats, IDeserializable {
   }
 
   getPlaytime(): string {
-    return this._minplaytime === this._maxplaytime
-      ? `${this._playingtime}`
-      : `${this._minplaytime} - ${this._maxplaytime}`;
+    const min = this._minplaytime ? this._minplaytime : this._playingtime;
+    const max = this._maxplaytime ? this._maxplaytime : this._playingtime;
+
+    if (!min && !max) {
+      return '?';
+    }
+
+    return min === max ? `${min}` : `${min} - ${max}`;
   }
 
   getRating(): number {

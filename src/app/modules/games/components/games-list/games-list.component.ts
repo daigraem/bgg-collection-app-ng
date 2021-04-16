@@ -147,10 +147,18 @@ export class GamesListComponent implements OnInit, OnDestroy {
       })
       // Playtime
       .filter((game: IGame) => {
+        const min = game.stats._minplaytime
+          ? game.stats._minplaytime
+          : game.stats._playingtime;
+        const max = game.stats._maxplaytime
+          ? game.stats._maxplaytime
+          : game.stats._playingtime;
+
         if (
-          (game.stats._minplaytime < filters.playtime[0] &&
+          (!min && !max) ||
+          (min < filters.playtime[0] &&
             filters.playtime[0] > filters.playtimeLimit[0]) ||
-          (game.stats._maxplaytime > filters.playtime[1] &&
+          (max > filters.playtime[1] &&
             filters.playtime[1] < filters.playtimeLimit[1])
         ) {
           return false;
