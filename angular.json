@@ -15,6 +15,9 @@
       "prefix": "app",
       "i18n": {
         "sourceLocale": "en-US",
+        "locales": {
+          "bg": "src/locale/messages.bg.xlf"
+        }
       },
       "architect": {
         "build": {
@@ -64,6 +67,11 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "bg": {
+              "localize": [
+                "bg"
+              ]
             }
           }
         },
@@ -75,6 +83,9 @@
           "configurations": {
             "production": {
               "browserTarget": "boardgames-collection:build:production"
+            },
+            "bg": {
+              "browserTarget": "boardgames-collection:build:bg"
             }
           }
         },
