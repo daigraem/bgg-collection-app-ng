@@ -5,6 +5,7 @@
     <tr>
       <th scope="col" class="c-games-list__th c-games-list__th--image">
         <app-orderby-filter
+          i18n-label
           label="Title"
           [orderBy]="orderByOptions.title"
         ></app-orderby-filter>
@@ -12,18 +13,21 @@
       <th scope="col" class="c-games-list__th"></th>
       <th scope="col" class="c-games-list__th --attributes">
         <app-orderby-filter
+          i18n-label
           label="Players"
           [orderBy]="orderByOptions.playerCount"
         ></app-orderby-filter>
       </th>
       <th scope="col" class="c-games-list__th --attributes">
         <app-orderby-filter
+          i18n-label
           label="Playtime"
           [orderBy]="orderByOptions.playtime"
         ></app-orderby-filter>
       </th>
       <th scope="col" class="c-games-list__th --attributes">
         <app-orderby-filter
+          i18n-label
           label="BGG Rating"
           [orderBy]="orderByOptions.rating"
         ></app-orderby-filter>
@@ -34,7 +38,7 @@
 <div>
   <div class="d-flex justify-content-center" *ngIf="loading">
     <div class="spinner-border m-5" role="status">
-      <span class="sr-only">Loading...</span>
+      <span class="sr-only" i18n>Loading...</span>
     </div>
   </div>
   <cdk-virtual-scroll-viewport
@@ -62,14 +66,14 @@
       </tr>
 
       <tr *ngIf="filteredGames.length === 0" class="text-center">
-        No games match the filter criteria.
-        <a (click)="onResetBtnClick()" href="#">Clear filters</a>
+        <span i18n>No games match the filter criteria.</span>
+        <a (click)="onResetBtnClick()" href="#" i18n>Clear filters</a>
       </tr>
     </table>
   </cdk-virtual-scroll-viewport>
 
-  <span
-    >{{ total }} games &bull; Last updated:
-    {{ updated | date: "longDate" }}</span
-  >
+  <span i18n>
+    {total, plural, =1 {{{total}} game} other {{{total}} games}} &bull; Last
+    updated: {{ updated | date: "longDate" }}
+  </span>
 </div>

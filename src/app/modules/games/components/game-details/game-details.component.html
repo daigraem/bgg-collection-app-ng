@@ -3,11 +3,11 @@
     <app-game-title [game]="game" context="details"></app-game-title>
 
     <dl>
-      <dt>Players</dt>
+      <dt i18n>Players</dt>
       <dd>{{ game.stats.getPlayerCount() }}</dd>
-      <dt>Playtime</dt>
+      <dt i18n>Playtime</dt>
       <dd>{{ game.stats.getPlaytime() }}</dd>
-      <dt>BGG&nbsp;Rating</dt>
+      <dt i18n>BGG Rating</dt>
       <dd><app-ratings [rating]="game.stats.getRating()"></app-ratings></dd>
     </dl>
   </div>

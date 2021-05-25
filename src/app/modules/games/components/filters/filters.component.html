@@ -3,6 +3,7 @@
     <div class="form-group">
       <label>&nbsp;</label>
       <app-input-debounce
+        i18n-placeholder
         placeholder="Filter by Title"
         (value)="changeSearch($event)"
         [delay]="delay"
@@ -16,7 +17,7 @@
           [checked]="currentFilters.expansions"
           (change)="toggleExpansions()"
         />
-        <label class="form-check-label" for="incl-expansions-checkbox"
+        <label class="form-check-label" for="incl-expansions-checkbox" i18n
           >incl.&nbsp;Expansions</label
         >
       </div>
@@ -25,7 +26,7 @@
 
   <div class="offset-lg-1 col-sm-12 col-lg-2">
     <div class="form-group">
-      <label>Players</label>
+      <label i18n>Players</label>
       <npn-slider
         [min]="currentFilters.playersLimit[0]"
         [max]="currentFilters.playersLimit[1]"
@@ -40,7 +41,7 @@
 
   <div class="col-sm-12 col-lg-2">
     <div class="form-group">
-      <label>Playtime</label>
+      <label i18n>Playtime</label>
       <npn-slider
         [min]="currentFilters.playtimeLimit[0]"
         [max]="currentFilters.playtimeLimit[1]"
@@ -55,7 +56,7 @@
 
   <div class="col-sm-12 col-lg-2">
     <div class="form-group">
-      <label>Rating</label>
+      <label i18n>Rating</label>
       <npn-slider
         [min]="currentFilters.ratingLimit[0]"
         [max]="currentFilters.ratingLimit[1]"
@@ -70,7 +71,11 @@
 
   <div class="col-sm-12 col-lg-1">
     <div class="form-group text-right">
-      <button class="btn btn-secondary btn-sm" (click)="onResetBtnClick()">
+      <button
+        class="btn btn-secondary btn-sm"
+        (click)="onResetBtnClick()"
+        i18n="reset button|Reset filters and sorting"
+      >
         Reset
       </button>
     </div>

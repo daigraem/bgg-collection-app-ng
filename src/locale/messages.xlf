@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="ec5e50408e6eb557758da17d4ab1986110cf556c" datatype="html">
+        <source>Filter by Title</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/filters/filters.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="79a4e755ca4a87815b39647c54f6cbbf368a81f5" datatype="html">
+        <source>incl. Expansions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/filters/filters.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="98e285d6085d82109d7f6cdf1d805c21022630e4" datatype="html">
+        <source>Players</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/filters/filters.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/game-details/game-details.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6902a2b2de605c684cfb8d588dcb2940d22b341b" datatype="html">
+        <source>Playtime</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/filters/filters.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/game-details/game-details.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a9b941f25f425bd907b8e23cbaed9e96a85e7db7" datatype="html">
+        <source>Rating</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/filters/filters.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a752601b6d98d373f3bb1ea28070a0f7baeb5dcc" datatype="html">
+        <source>Reset</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/filters/filters.component.html</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+        <note priority="1" from="description">Reset filters and sorting</note>
+        <note priority="1" from="meaning">reset button</note>
+      </trans-unit>
+      <trans-unit id="879982829b599889fae5ff3530bcb8f0ba0d8701" datatype="html">
+        <source>BGG Rating</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/game-details/game-details.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fdf7cbdc140d0aab0f0b6c06065a0fd448ed6a2e" datatype="html">
+        <source>Title</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="94516fa213706c67ce5a5b5765681d7fb032033a" datatype="html">
+        <source>Loading...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2a04b4b674ed20ce4f7dbc85d1d0bd1ae09b2bdb" datatype="html">
+        <source>No games match the filter criteria.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1e5e23363e949f7dcbaf034bdb141a561132a10e" datatype="html">
+        <source>Clear filters</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cb9788a09dcb7fda14ee2d39a97d33d10c10bc59" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {<x id="INTERPOLATION"/> game} other {<x id="INTERPOLATION"/> games}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="55828694f2d512767c3a51bf0a8b0696bc81c26d" datatype="html">
+        <source> <x id="ICU" equiv-text="{total, plural, =1 {{{total}} game} other {{{total}} games}}"/> • Last updated: <x id="INTERPOLATION_1" equiv-text="ted: {{ updated | date:
+    &quot;longDat"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
+          <context context-type="linenumber">76,78</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
