@@ -1,0 +1,5 @@
+.c-back-link {
+  &::before {
+    content: "< ";
+  }
+}
