@@ -72,8 +72,11 @@
     </table>
   </cdk-virtual-scroll-viewport>
 
-  <span i18n>
-    {total, plural, =1 {{{total}} game} other {{{total}} games}} &bull; Last
-    updated: {{ updated | date: "longDate" }}
-  </span>
+  <div>
+    <span i18n
+      >{total, plural, =1 {{{total}} game} other {{{total}} games}}</span
+    >
+    &nbsp;&bull;&nbsp;
+    <span i18n>Last updated: {{ updated | date: "longDate" }}</span>
+  </div>
 </div>

@@ -27,7 +27,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/games/components/game-details/game-details.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
@@ -43,7 +43,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/games/components/game-details/game-details.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">13</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
@@ -73,7 +73,7 @@
         <target>BGG оценка</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/games/components/game-details/game-details.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">15</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
@@ -114,20 +114,18 @@
       </trans-unit>
       <trans-unit id="cb9788a09dcb7fda14ee2d39a97d33d10c10bc59" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {<x id="INTERPOLATION"/> game} other {<x id="INTERPOLATION"/> games}}</source>
-        <target>{VAR_PLURAL, plural, =1 {<x id="INTERPOLATION"/> игри} other {<x id="INTERPOLATION"/> игри}}</target>
+        <target>{VAR_PLURAL, plural, =1 {<x id="INTERPOLATION"/> игра} other {<x id="INTERPOLATION"/> игри}}</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="55828694f2d512767c3a51bf0a8b0696bc81c26d" datatype="html">
-        <source> <x id="ICU" equiv-text="{total, plural, =1 {{{total}} game} other {{{total}} games}}"/> • Last updated: <x id="INTERPOLATION_1" equiv-text="ted: {{ updated | date:
-    &quot;longDat"/> </source>
-        <target> <x id="ICU" equiv-text="{total, plural, =1 {{{total}} game} other {{{total}} games}}"/> • Последно обновено: <x id="INTERPOLATION_1" equiv-text="ted: {{ updated | date:
-    &quot;longDat"/> </target>
+      <trans-unit id="42095351b487327e89b44e73feef86d449cd728b" datatype="html">
+        <source>Last updated: <x id="INTERPOLATION" equiv-text="{{ updated | date: &quot;longDate&quot; }}"/></source>
+        <target>Последно обновено: <x id="INTERPOLATION" equiv-text="{{ updated | date: &quot;longDate&quot; }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/games/components/games-list/games-list.component.html</context>
-          <context context-type="linenumber">76,78</context>
+          <context context-type="linenumber">80</context>
         </context-group>
       </trans-unit>
     </body>
