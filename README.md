@@ -1,6 +1,6 @@
-# BoardgamesCollection
+# Boardgame Collection Viewer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+A simple app that displays a sortable and filterable table with board games fetched from a custom BoardGameGeek proxy API that returns data as JSON.
 
 ## Development server
 
