@@ -1,7 +1,7 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppConfigService } from '@services/app-config/app-config.service';
 
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from '@shared/shared.module';
@@ -29,6 +29,7 @@ export const initializeApp = (
     AppRoutingModule,
   ],
   providers: [
+    Title,
     httpInterceptorProviders,
     CacheMapService,
     {

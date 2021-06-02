@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoggerService } from '@services/logger/logger.service';
 
 export interface IAppConfig {
-  appName: string;
+  appTitle: string;
   apiUrl: string;
   footerText: string;
 }
